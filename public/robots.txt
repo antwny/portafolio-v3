@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://antwny.github.io/portafolio-v2/sitemap.xml
+Sitemap: https://antwny.github.io/portafolio-v3/sitemap.xml

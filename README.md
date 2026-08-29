@@ -7,7 +7,7 @@
 [![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-CI%2FCD-2088FF?style=for-the-badge&logo=githubactions&logoColor=white)](https://github.com/features/actions)
 [![License](https://img.shields.io/badge/License-MIT-050505?style=for-the-badge)](LICENSE)
 
-🌐 **Demo en vivo:** [https://antwny.github.io/portafolio-v2/](https://antwny.github.io/portafolio-v2/)
+🌐 **Demo en vivo:** [https://antwny.github.io/portafolio-v3/](https://antwny.github.io/portafolio-v3/)
 
 ---
 
@@ -15,7 +15,7 @@
 
 | Modo Claro | Modo Oscuro |
 | :---: | :---: |
-| ![Modo Claro](public/assets/projects/portafolio-v2/hero-y-navbar.png) | ![Modo Oscuro](public/assets/projects/portafolio-v2/stack.png) |
+| ![Modo Claro](public/assets/projects/portafolio-v3/hero-y-navbar.png) | ![Modo Oscuro](public/assets/projects/portafolio-v3/stack.png) |
 
 ---
 
@@ -81,8 +81,8 @@ Herramientas: Linux (Arch / Bash) · Git & GitHub · JasperReports · QuestPDF �
 ### 1. Clonar el repositorio
 
 ```bash
-git clone https://github.com/antwny/portafolio-v2.git
-cd portafolio-v2
+git clone https://github.com/antwny/portafolio-v3.git
+cd portafolio-v3
 ```
 
 ### 2. Instalar dependencias

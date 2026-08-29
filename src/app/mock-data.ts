@@ -187,17 +187,17 @@ export const MOCK_PROJECTS: Project[] = [
     ]
   },
   {
-    id: 'portafolio-v2',
+    id: 'portafolio-v3',
     title: 'PORTAFOLIO WEB V2',
     subtitle: 'Portafolio Brutalista Editorial de Alta Gama',
     description:
       'Portafolio web personal desarrollado con Angular 19 y TypeScript bajo una estética Brutalista Editorial. Cuenta con tipografía monumental, micro-interacciones fluidas, soporte de temas claro/oscuro y componentes modulares reactivos.',
     stack: ['Angular 19', 'TypeScript', 'CSS Grid', 'BEM', 'Responsive Design'],
-    url: 'https://github.com/antwny/portafolio-v2',
-    liveUrl: 'https://antwny.github.io/portafolio-v2/',
+    url: 'https://github.com/antwny/portafolio-v3',
+    liveUrl: 'https://antwny.github.io/portafolio-v3/',
     badge: 'Frontend / Angular 19',
     category: 'FRONTEND',
-    image: 'assets/projects/portafolio-v2/hero-y-navbar.png',
+    image: 'assets/projects/portafolio-v3/hero-y-navbar.png',
     featured: true,
     highlights: [
       'Diseño editorial de vanguardia con Space Grotesk y IBM Plex Mono',
@@ -206,13 +206,13 @@ export const MOCK_PROJECTS: Project[] = [
       'Arquitectura modular basada en componentes y Angular Signals'
     ],
     gallery: [
-      { url: 'assets/projects/portafolio-v2/hero-y-navbar.png', title: 'Portada Principal & Hero', caption: 'Diseño monumental brutalista editorial con reloj en vivo y tipografía Space Grotesk.' },
-      { url: 'assets/projects/portafolio-v2/sobre-mi.png', title: 'Perfil Profesional & Manifiesto', caption: 'Filosofía de desarrollo, trayectoria técnica y pilares fundamentales.' },
-      { url: 'assets/projects/portafolio-v2/proyectos.png', title: 'Galería de Proyectos Seleccionados', caption: 'Índice interactivo de proyectos con layout editorial y badges.' },
-      { url: 'assets/projects/portafolio-v2/proyectos-2.png', title: 'Detalle de Proyectos & Especificaciones', caption: 'Desglose técnico de arquitectura, base de datos y stacks empleados.' },
-      { url: 'assets/projects/portafolio-v2/archivo.png', title: 'Archivo de Experimentos', caption: 'Registro cronológico de implementaciones, scripts y proyectos de investigación.' },
-      { url: 'assets/projects/portafolio-v2/stack.png', title: 'Póster de Tecnologías & Stack', caption: 'Catálogo de herramientas, lenguajes y frameworks con microinteracciones.' },
-      { url: 'assets/projects/portafolio-v2/contacto.png', title: 'Contacto & Redes', caption: 'Módulo de inicio de contacto con copiado rápido y enlaces sociales.' }
+      { url: 'assets/projects/portafolio-v3/hero-y-navbar.png', title: 'Portada Principal & Hero', caption: 'Diseño monumental brutalista editorial con reloj en vivo y tipografía Space Grotesk.' },
+      { url: 'assets/projects/portafolio-v3/sobre-mi.png', title: 'Perfil Profesional & Manifiesto', caption: 'Filosofía de desarrollo, trayectoria técnica y pilares fundamentales.' },
+      { url: 'assets/projects/portafolio-v3/proyectos.png', title: 'Galería de Proyectos Seleccionados', caption: 'Índice interactivo de proyectos con layout editorial y badges.' },
+      { url: 'assets/projects/portafolio-v3/proyectos-2.png', title: 'Detalle de Proyectos & Especificaciones', caption: 'Desglose técnico de arquitectura, base de datos y stacks empleados.' },
+      { url: 'assets/projects/portafolio-v3/archivo.png', title: 'Archivo de Experimentos', caption: 'Registro cronológico de implementaciones, scripts y proyectos de investigación.' },
+      { url: 'assets/projects/portafolio-v3/stack.png', title: 'Póster de Tecnologías & Stack', caption: 'Catálogo de herramientas, lenguajes y frameworks con microinteracciones.' },
+      { url: 'assets/projects/portafolio-v3/contacto.png', title: 'Contacto & Redes', caption: 'Módulo de inicio de contacto con copiado rápido y enlaces sociales.' }
     ]
   }
 ];
