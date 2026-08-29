@@ -1,0 +1,45 @@
+<section class="experience-section" id="experiencia">
+  <div class="container">
+    <div class="section-heading">
+      <span>04</span>
+      <p>TRAYECTORIA<br />PROFESIONAL</p>
+      <h2 appReveal class="reveal-title">HISTORIAL<br />& EXPERIENCIA</h2>
+    </div>
+
+    <div class="timeline">
+      @for (exp of experiences; track exp.company) {
+        <div class="timeline-item">
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <p class="timeline-period">{{ exp.period }}</p>
+            <h3 class="timeline-role">{{ exp.role }}</h3>
+            <p class="timeline-company">{{ exp.company }}</p>
+            <p class="timeline-description">{{ exp.description }}</p>
+            <ul class="timeline-tech">
+              @for (tech of exp.tech; track tech) {
+                <li>{{ tech }}</li>
+              }
+            </ul>
+          </div>
+        </div>
+      }
+    </div>
+
+    <div class="certifications">
+      <h3 appReveal class="certifications-title reveal-title">Certificaciones</h3>
+      <ul class="certifications-list">
+        @for (cert of certifications; track cert) {
+          <li>
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path
+                d="M12 2l2.4 1.8 3-.2 1 2.9 2.6 1.5-.9 2.9.9 2.9-2.6 1.5-1 2.9-3-.2L12 22l-2.4-1.8-3 .2-1-2.9L3 15.8l.9-2.9L3 10l2.6-1.5 1-2.9 3 .2L12 2z"
+              />
+              <path d="M11 15.5l-2.5-2.5 1.06-1.06L11 13.38l3.44-3.44L15.5 11z" fill="#fff" />
+            </svg>
+            <span>{{ cert }}</span>
+          </li>
+        }
+      </ul>
+    </div>
+  </div>
+</section>

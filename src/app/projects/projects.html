@@ -1,0 +1,279 @@
+<section class="projects-section" id="proyectos">
+  <div class="container">
+    <div class="section-heading">
+      <span>03</span>
+      <p>OBRAS<br />SELECCIONADAS</p>
+      <h2 appReveal class="reveal-title">ÍNDICE DE<br />PROYECTOS</h2>
+    </div>
+
+    <!-- Filter Buttons -->
+    <div class="filter-bar">
+      <span class="filter-label">DISCIPLINA // FILTRO:</span>
+      <div class="filter-buttons">
+        @for (f of filters; track f.value) {
+          <button
+            type="button"
+            class="filter-btn"
+            [class.active]="activeFilter() === f.value"
+            (click)="setFilter(f.value)"
+          >
+            {{ f.label }}
+          </button>
+        }
+      </div>
+    </div>
+
+    <!-- Projects Grid -->
+    <div class="projects-grid">
+      @for (project of filteredProjects(); track project.id) {
+        <article class="project-card" [class.featured-card]="project.featured">
+          <div class="project-number">0{{ $index + 1 }}</div>
+
+          <!-- Project Screenshot Visual -->
+          <div
+            class="project-media-wrapper"
+            tabindex="0"
+            (click)="openGallery(project)"
+            (keydown.enter)="openGallery(project)"
+            role="button"
+            [attr.aria-label]="'Ver capturas de ' + project.title"
+          >
+            <div class="image-aspect-box">
+              <img
+                [src]="project.image"
+                [alt]="project.title + ' captura'"
+                class="project-screenshot"
+                loading="lazy"
+              />
+            </div>
+            <div class="media-overlay">
+              <span class="media-zoom-badge">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/>
+                </svg>
+                VER CAPTURAS
+                @if (project.gallery && project.gallery.length > 1) {
+                  ({{ project.gallery.length }})
+                }
+              </span>
+            </div>
+            @if (project.gallery && project.gallery.length > 1) {
+              <div class="gallery-count-pill">
+                <span>{{ project.gallery.length }} CAPTURAS</span>
+              </div>
+            }
+          </div>
+
+          <!-- Project Meta -->
+          <div class="project-meta-row">
+            <span class="project-badge">{{ project.badge }}</span>
+            @if (project.liveUrl) {
+              <span class="live-badge">● DEMO EN VIVO</span>
+            }
+          </div>
+
+          <h3 class="project-title">
+            <a [href]="project.url" target="_blank" rel="noopener">{{ project.title }}</a>
+          </h3>
+
+          @if (project.subtitle) {
+            <p class="project-subtitle">{{ project.subtitle }}</p>
+          }
+
+          <p class="project-description">{{ project.description }}</p>
+
+          @if (project.highlights && project.highlights.length > 0) {
+            <ul class="project-highlights">
+              @for (highlight of project.highlights; track highlight) {
+                <li>{{ highlight }}</li>
+              }
+            </ul>
+          }
+
+          <ul class="project-stack">
+            @for (tech of project.stack; track tech) {
+              <li>{{ tech }}</li>
+            }
+          </ul>
+
+          <div class="project-actions">
+            @if (project.gallery && project.gallery.length > 0) {
+              <button
+                type="button"
+                class="action-btn gallery-btn"
+                (click)="openGallery(project)"
+              >
+                <span>VER CAPTURAS ({{ project.gallery.length }})</span>
+                <span class="action-arrow">⤢</span>
+              </button>
+            }
+            @if (project.liveUrl) {
+              <a
+                [href]="project.liveUrl"
+                target="_blank"
+                rel="noopener"
+                class="action-btn live-btn"
+              >
+                <span>DEMO EN VIVO</span>
+                <span class="action-arrow">↗</span>
+              </a>
+            }
+            <a
+              [href]="project.url"
+              target="_blank"
+              rel="noopener"
+              class="action-btn code-btn"
+            >
+              <span>GITHUB</span>
+              <span class="action-arrow">↗</span>
+            </a>
+          </div>
+        </article>
+      }
+    </div>
+
+    <!-- Skills & Stack Section -->
+    <div class="stack-section" id="skills">
+      <div class="stack-intro">
+        <span>STACK</span>
+        <h3 appReveal class="reveal-title">LENGUAJE<br />DEL SISTEMA</h3>
+        <p>Herramientas, plataformas y arquitecturas que convierten una idea en un sistema funcional y escalable.</p>
+      </div>
+      <div class="stack-tags">
+        @for (skill of skills; track skill) {
+          <span class="stack-tag"
+            ><i>0{{ $index + 1 }}</i
+            >{{ skill }}<b>↗</b></span
+          >
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Lightbox Modal for Screenshots -->
+@if (activeModalProject(); as modalProject) {
+  <div
+    class="modal-backdrop"
+    (click)="closeGallery()"
+    role="dialog"
+    aria-modal="true"
+    [attr.aria-label]="'Galería de capturas: ' + modalProject.title"
+  >
+    <div class="modal-dialog" (click)="$event.stopPropagation()">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <span class="modal-number">PROYECTO // {{ modalProject.id }}</span>
+          <h4 class="modal-title">{{ modalProject.title }}</h4>
+          <span class="modal-badge">{{ modalProject.badge }}</span>
+        </div>
+        <button
+          type="button"
+          class="modal-close-btn"
+          (click)="closeGallery()"
+          aria-label="Cerrar modal de capturas"
+        >
+          ✕ CERRAR [ESC]
+        </button>
+      </div>
+
+      <!-- Main Screenshot Viewer -->
+      <div class="modal-viewer">
+        @if (modalProject.gallery && modalProject.gallery.length > 1) {
+          <button
+            type="button"
+            class="modal-nav-btn prev-btn"
+            (click)="prevImage()"
+            aria-label="Captura anterior"
+          >
+            ‹
+          </button>
+        }
+
+        <div class="modal-image-stage">
+          @if (currentGalleryItem(); as currentItem) {
+            <div class="modal-image-container">
+              <img
+                [src]="currentItem.url"
+                [alt]="currentItem.title"
+                class="modal-main-img"
+              />
+            </div>
+            <div class="modal-image-caption">
+              <div class="caption-header">
+                <strong>{{ currentItem.title }}</strong>
+                @if (modalProject.gallery) {
+                  <span class="caption-counter"
+                    >{{ activeImageIndex() + 1 }} / {{ modalProject.gallery.length }}</span
+                  >
+                }
+              </div>
+              @if (currentItem.caption) {
+                <p class="caption-text">{{ currentItem.caption }}</p>
+              }
+            </div>
+          }
+        </div>
+
+        @if (modalProject.gallery && modalProject.gallery.length > 1) {
+          <button
+            type="button"
+            class="modal-nav-btn next-btn"
+            (click)="nextImage()"
+            aria-label="Captura siguiente"
+          >
+            ›
+          </button>
+        }
+      </div>
+
+      <!-- Thumbnails Strip -->
+      @if (modalProject.gallery && modalProject.gallery.length > 1) {
+        <div class="modal-thumbnails">
+          @for (item of modalProject.gallery; track item.url) {
+            <button
+              type="button"
+              class="thumb-btn"
+              [class.active]="$index === activeImageIndex()"
+              (click)="selectImage($index)"
+              [attr.aria-label]="item.title"
+            >
+              <img [src]="item.url" [alt]="item.title" loading="lazy" />
+              <span class="thumb-label">{{ item.title }}</span>
+            </button>
+          }
+        </div>
+      }
+
+      <!-- Modal Footer CTAs -->
+      <div class="modal-footer">
+        <div class="modal-stack-tags">
+          @for (tech of modalProject.stack; track tech) {
+            <span>{{ tech }}</span>
+          }
+        </div>
+        <div class="modal-actions">
+          @if (modalProject.liveUrl) {
+            <a
+              [href]="modalProject.liveUrl"
+              target="_blank"
+              rel="noopener"
+              class="modal-cta-btn live-cta"
+            >
+              DEMO EN VIVO ↗
+            </a>
+          }
+          <a
+            [href]="modalProject.url"
+            target="_blank"
+            rel="noopener"
+            class="modal-cta-btn repo-cta"
+          >
+            VER EN GITHUB ↗
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+}

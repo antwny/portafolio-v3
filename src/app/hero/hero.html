@@ -1,0 +1,60 @@
+<section class="hero" id="inicio">
+  <div class="hero-sheet">
+    <div class="hero-index">
+      <span class="index-title">ANTWNY / {{ user.location }}</span>
+      <span class="index-time" [attr.aria-label]="'Hora local: ' + currentTime()">
+        HORA LOCAL [{{ currentTime() || '--:--:--' }} GMT-5]
+      </span>
+      <span class="index-sub">INFORMÁTICA / DESARROLLO</span>
+    </div>
+
+    <div class="hero-status">
+      <div class="status-badge">
+        <span class="status-pulse"></span>
+        <span class="status-text">DISPONIBLE / PROYECTOS & EMPLEO</span>
+      </div>
+      <div class="hero-edition">EDICIÓN 2026 / 01</div>
+    </div>
+
+    <p class="hero-kicker">{{ user.role }} · ARQUITECTURA / INTERFACES / SOPORTE</p>
+
+    <h1
+      appReveal
+      class="hero-title reveal-title"
+      aria-label="Construyo sistemas digitales que realmente funcionan"
+    >
+      <span class="title-line">CONSTRUYO</span>
+      <span class="title-line glass-word" data-text="SISTEMAS">SISTEMAS</span>
+      <span class="title-line title-shift">DIGITALES</span>
+    </h1>
+
+    <p class="hero-response">
+      <span>QUE</span><strong>REALMENTE<br />FUNCIONAN.</strong>
+    </p>
+
+    <div class="hero-detail">
+      <p>{{ user.tagline }}</p>
+      <div class="hero-actions">
+        <a href="#proyectos" class="hero-link primary-link">VER PROYECTOS <span>↘</span></a>
+        <button
+          type="button"
+          (click)="copyEmail($event)"
+          class="hero-copy-btn"
+          [class.copied]="copiedEmail()"
+          [title]="'Copiar ' + user.email"
+          [attr.aria-label]="copiedEmail() ? 'Email copiado al portapapeles' : 'Copiar email de contacto'"
+        >
+          @if (copiedEmail()) {
+            <span class="copy-text">✓ COPIADO AL PORTAPAPELES</span>
+          } @else {
+            <span class="copy-text">COPIAR EMAIL</span>
+            <span class="copy-icon">⎘</span>
+          }
+        </button>
+      </div>
+    </div>
+
+    <div class="hero-scroll"><span>BAJAR PARA EXPLORAR</span><i></i></div>
+  </div>
+</section>
+
