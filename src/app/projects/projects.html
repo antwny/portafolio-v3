@@ -191,13 +191,26 @@
           </button>
         }
 
-        <div class="modal-image-stage">
+        <div
+          class="modal-image-stage"
+          (touchstart)="onTouchStart($event)"
+          (touchend)="onTouchEnd($event)"
+        >
           @if (currentGalleryItem(); as currentItem) {
             <div class="modal-image-container">
+              @if (imageLoading()) {
+                <div class="modal-skeleton" aria-hidden="true">
+                  <div class="skeleton-shimmer"></div>
+                  <span class="skeleton-pill">CARGANDO CAPTURA...</span>
+                </div>
+              }
               <img
                 [src]="currentItem.url"
                 [alt]="currentItem.title"
                 class="modal-main-img"
+                [class.img-hidden]="imageLoading()"
+                (load)="onImageLoaded()"
+                (error)="onImageError($event)"
               />
             </div>
             <div class="modal-image-caption">

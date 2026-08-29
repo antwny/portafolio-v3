@@ -1,0 +1,22 @@
+{
+  "name": "Antony A. Benites — Informática y Desarrollo de Software",
+  "short_name": "Antony A. Benites",
+  "description": "Portfolio de desarrollo full-stack, ingeniería de software y sistemas web por Antony A. Benites.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f1f2f0",
+  "theme_color": "#050505",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "favicon.ico",
+      "sizes": "48x48 32x32 16x16",
+      "type": "image/x-icon"
+    }
+  ]
+}

@@ -17,6 +17,10 @@ export class Projects {
   activeFilter = signal<ProjectFilter>('ALL');
   activeModalProject = signal<Project | null>(null);
   activeImageIndex = signal<number>(0);
+  imageLoading = signal<boolean>(true);
+
+  private touchStartX = 0;
+  private touchStartY = 0;
 
   filters: { label: string; value: ProjectFilter }[] = [
     { label: 'TODOS', value: 'ALL' },
@@ -41,6 +45,7 @@ export class Projects {
   }
 
   openGallery(project: Project, index: number = 0) {
+    this.imageLoading.set(true);
     this.activeModalProject.set(project);
     this.activeImageIndex.set(index);
     if (typeof document !== 'undefined') {
@@ -51,6 +56,7 @@ export class Projects {
   closeGallery() {
     this.activeModalProject.set(null);
     this.activeImageIndex.set(0);
+    this.imageLoading.set(false);
     if (typeof document !== 'undefined') {
       document.body.style.overflow = '';
     }
@@ -59,6 +65,7 @@ export class Projects {
   nextImage() {
     const project = this.activeModalProject();
     if (!project || !project.gallery || project.gallery.length <= 1) return;
+    this.imageLoading.set(true);
     const nextIdx = (this.activeImageIndex() + 1) % project.gallery.length;
     this.activeImageIndex.set(nextIdx);
   }
@@ -66,13 +73,49 @@ export class Projects {
   prevImage() {
     const project = this.activeModalProject();
     if (!project || !project.gallery || project.gallery.length <= 1) return;
+    this.imageLoading.set(true);
     const prevIdx =
       (this.activeImageIndex() - 1 + project.gallery.length) % project.gallery.length;
     this.activeImageIndex.set(prevIdx);
   }
 
   selectImage(index: number) {
+    if (index === this.activeImageIndex()) return;
+    this.imageLoading.set(true);
     this.activeImageIndex.set(index);
+  }
+
+  onImageLoaded() {
+    this.imageLoading.set(false);
+  }
+
+  onImageError(event: Event) {
+    this.imageLoading.set(false);
+  }
+
+  onTouchStart(event: TouchEvent) {
+    if (event.touches.length === 1) {
+      this.touchStartX = event.touches[0].clientX;
+      this.touchStartY = event.touches[0].clientY;
+    }
+  }
+
+  onTouchEnd(event: TouchEvent) {
+    if (event.changedTouches.length === 1) {
+      const touchEndX = event.changedTouches[0].clientX;
+      const touchEndY = event.changedTouches[0].clientY;
+      const diffX = touchEndX - this.touchStartX;
+      const diffY = touchEndY - this.touchStartY;
+
+      // Threshold: at least 45px horizontal swipe and primarily horizontal movement
+      if (Math.abs(diffX) > 45 && Math.abs(diffX) > Math.abs(diffY) * 1.3) {
+        if (diffX < 0) {
+          this.nextImage();
+        } else {
+          this.prevImage();
+        }
+      }
+    }
   }
 
   currentGalleryItem(): ProjectGalleryItem | null {
