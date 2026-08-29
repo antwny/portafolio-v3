@@ -15,7 +15,7 @@
 
 | Modo Claro | Modo Oscuro |
 | :---: | :---: |
-| ![Modo Claro](public/assets/projects/portafolio-v3/hero-y-navbar.png) | ![Modo Oscuro](public/assets/projects/portafolio-v3/stack.png) |
+| ![Modo Claro](screenshots/principal-claro.png) | ![Modo Oscuro](screenshots/contacto-oscuro.png) |
 
 ---
 
