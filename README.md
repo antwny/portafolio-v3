@@ -1,4 +1,4 @@
-# ANTWNY — Portafolio Web Personal (v2)
+# Portafolio Web Personal 
 
 > **Portafolio Brutalista Editorial de Alta Gama** diseñado y desarrollado con **Angular 19**, **TypeScript** y **CSS Grid** para presentar proyectos de ingeniería de software, arquitectura de sistemas y desarrollo full-stack.
 
