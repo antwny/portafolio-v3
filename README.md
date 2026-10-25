@@ -148,13 +148,6 @@ portfolio/
 
 ---
 
-## 👤 Autor
-
-**Antony A. Benites**
-- **GitHub:** [@antwny](https://github.com/antwny)
-- **LinkedIn:** [Antony Benites](https://www.linkedin.com/in/antony-benites)
-- **Correo:** `anto***@gmail.com`
-
 ---
 
 ## 📄 Licencia
